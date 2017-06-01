@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, TouchableWithoutFeedback, View, ScrollView} from 'react-native';
+import {Text, TouchableWithoutFeedback, View, ScrollView, Image} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
 import AlphabetListView from 'react-native-alphabetlistview';
@@ -13,15 +13,19 @@ class ListItem extends Component {
     //const {phone} = this.props.employee;
 
     return (
+
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
-        <View>
+<View>
+
           <CardSection>
             <Text>
               {name}
             </Text>
           </CardSection>
-        </View>
+</View>
+
       </TouchableWithoutFeedback>
+
     );
   }
 }

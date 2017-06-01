@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListView, TextInput, View, ScrollView } from 'react-native';
+import { ListView, TextInput, View, ScrollView, Image } from 'react-native';
 import { employeesFetch } from '../actions';
 import ListItem from './ListItem';
 import AtoZListView from 'react-native-atoz-listview';
@@ -46,9 +46,11 @@ class EmployeeList extends Component {
     if (this.props.employees !== []) {
       const searched = _.filter(this.props.employees, (employee) => {
         console.log(employee.name.toLowerCase().indexOf(term.toLowerCase()));
-        return employee.phone.toLowerCase().indexOf(term.toLowerCase()) !== -1;
+        //const good = employee.name && employee.phone
+        return employee.name.toLowerCase().indexOf(term.toLowerCase()) && employee.phone.toLowerCase().indexOf(term.toLowerCase()) !== -1;
+
       })
-      console.log(searched);
+      //console.log(searched);
       this.createDataSource(searched);
     }
   }
@@ -57,9 +59,8 @@ class EmployeeList extends Component {
 
   render() {
     return (
-
-
-    <View>
+     <View>
+<Image source={require('../images/medii.png')}>
     <TextInput
       style={styles.textInput}
       placeholder = "search for medical"
@@ -67,17 +68,18 @@ class EmployeeList extends Component {
       value={this.state.searchTerm}
     />
 
+
       <ListView
-        //data={this.props.employee}
          enableEmptySections
-        //data={this.dataSource}
         dataSource={this.dataSource}
         renderRow={this.renderRow}
-
       />
 
+      </Image>
 
-        </View>
+   </View>
+
+
     );
 
   }
@@ -89,6 +91,7 @@ const styles = {
     borderWidth:1,
     borderColor: '#cecece',
     marginBottom:10,
+    //opacity: 0.5
   //  marginHorizontal: 10
   }
 };
