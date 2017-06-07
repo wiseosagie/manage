@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { ListView, TextInput, View, ScrollView, Image } from 'react-native';
 import { employeesFetch } from '../actions';
 import ListItem from './ListItem';
-import AtoZListView from 'react-native-atoz-listview';
+//import AtoZListView from 'react-native-atoz-listview';
 import Input from './common';
-import Search from 'react-native-search-box';
-import AlphabetListView from 'react-native-alphabetlistview';
+//import Search from 'react-native-search-box';
+//import AlphabetListView from 'react-native-alphabetlistview';
 
 const rowHeight = 40;
 
@@ -52,6 +52,8 @@ class EmployeeList extends Component {
       })
       //console.log(searched);
       this.createDataSource(searched);
+    } else {
+      createDataSource(employees);
     }
   }
 
@@ -59,8 +61,8 @@ class EmployeeList extends Component {
 
   render() {
     return (
-     <View>
-<Image source={require('../images/medii.png')}>
+
+<View>
     <TextInput
       style={styles.textInput}
       placeholder = "search for medical"
@@ -75,9 +77,9 @@ class EmployeeList extends Component {
         renderRow={this.renderRow}
       />
 
-      </Image>
+    </View>
 
-   </View>
+
 
 
     );
@@ -91,7 +93,7 @@ const styles = {
     borderWidth:1,
     borderColor: '#cecece',
     marginBottom:10,
-    //opacity: 0.5
+  // opacity: 0.5
   //  marginHorizontal: 10
   }
 };

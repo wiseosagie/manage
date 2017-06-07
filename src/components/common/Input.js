@@ -42,7 +42,7 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    // opacity: 0.5,
+     opacity: 0.5,
 
   }
 };
